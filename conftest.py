@@ -16,7 +16,7 @@ def page():
 
         yield page
 
-        # ✅ Proper teardown (IMPORTANT)
+        #  Proper teardown (IMPORTANT)
         page.set_default_timeout(5000)
         context.close()
         browser.close()

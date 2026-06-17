@@ -20,7 +20,7 @@ class HomePage:
         self.sort_dropdown.select_option(option)
         self.page.wait_for_timeout(5000)
 
-        print(f"✅ Products sorted by option: {option}")
+        print(f" Products sorted by option: {option}")
 
     # ---------------- FIRST PRODUCT ----------------
     def get_first_product(self):
@@ -29,8 +29,8 @@ class HomePage:
         self.page.set_default_timeout(2000)
         price = self.product_prices.first.text_content()
 
-        print(f"📦 First product name: {name}")
-        print(f"💰 First product price: {price}")
+        print(f" First product name: {name}")
+        print(f" First product price: {price}")
 
         return name, price
 
@@ -43,7 +43,7 @@ class HomePage:
 
         cart_count = self.cart_badge.text_content()
 
-        print(f"🛒 Product added to cart. Cart count: {cart_count}")
+        print(f" Product added to cart. Cart count: {cart_count}")
 
         assert cart_count == "1", "Cart count mismatch"
 
@@ -53,7 +53,7 @@ class HomePage:
         self.cart_icon.click()
         self.page.wait_for_url("**/cart.html")
 
-        print("🛍️ Cart page opened successfully")
+        print(" Cart page opened successfully")
 
     # ---------------- VERIFY CART ----------------
     def verify_cart(self, expected_name, expected_price):
@@ -62,10 +62,10 @@ class HomePage:
         actual_price = self.page.locator("[data-test='inventory-item-price']").first.text_content()
         actual_qty = self.page.locator("[data-test='item-quantity']").first.text_content()
 
-        print("🔍 Verifying cart details...")
-        print(f"✔ Expected Name: {expected_name} | Actual: {actual_name}")
-        print(f"✔ Expected Price: {expected_price} | Actual: {actual_price}")
-        print(f"✔ Quantity: {actual_qty}")
+        print(" Verifying cart details...")
+        print(f" Expected Name: {expected_name} | Actual: {actual_name}")
+        print(f" Expected Price: {expected_price} | Actual: {actual_price}")
+        print(f" Quantity: {actual_qty}")
 
         assert actual_name == expected_name, "Name mismatch"
         assert actual_price == expected_price, "Price mismatch"
